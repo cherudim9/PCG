@@ -47,7 +47,7 @@ using std::endl;
 
   @see ExchangeHalo
 */
-void SetupHalo_ref(SparseMatrix & A, int nonzeros) {
+void SetupHalo_ref(SparseMatrix & A) {
 
   // Extract Matrix pieces
 
@@ -104,13 +104,13 @@ void SetupHalo_ref(SparseMatrix & A, int nonzeros) {
     totalToBeReceived += (curNeighbor->second).size();
   }
 
-    int global_tbs = 0, global_tbr = 0;
+  int global_tbs = 0, global_tbr = 0;
   MPI_Allreduce(&totalToBeSent, &global_tbs, 1, MPI_INT, MPI_SUM, MPI_COMM_WORLD);
   MPI_Allreduce(&totalToBeReceived, &global_tbr, 1, MPI_INT, MPI_SUM, MPI_COMM_WORLD);
-  if (rank == 0){
+  if (A.geom->rank == 0){
     int nonzeros = A.totalNumberOfNonzeros;
     std::cout << "totalToBeSent = " << global_tbs << " totalToBeReceived = " << global_tbr << std::endl;
-    std:: cout << " ratio  = " << global_tbs + global_tbr << " / " << nonzeros << " = " << (global_tbs+global_tbr+0.0)/nonzeros*100.0 << "%"<<endl;
+    std:: cout << " ratio  = " << global_tbs + global_tbr << " / " << nonzeros << " = " << (global_tbs+global_tbr+0.0)/nonzeros*100.0 << "%"<<std::endl;
   }
   
   // Build the arrays and lists needed by the ExchangeHalo function.
