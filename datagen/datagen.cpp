@@ -123,7 +123,7 @@ int main(int argc, char ** argv)
     }
     
     //current load: start with i
-    if (line_string[0]=='i'){
+    if (line_string[0]=='i' || line_string[0]=='I'){
       while(line_string[0]!=' ')
 	line_string.erase(0,1);
       line_string.erase(0,1);
@@ -150,6 +150,7 @@ int main(int argc, char ** argv)
     if (line_string[0]=='V'){
       while(line_string[0]!=' ')
 	line_string.erase(0,1);
+
       auto node1=string_get_node(line_string);
       auto node2=string_get_node(line_string);
       double rv;
@@ -165,6 +166,18 @@ int main(int argc, char ** argv)
     if (line_string[0] == 'R'){
       line_string.erase(0,1);
       string_get_number(line_string);
+
+      //for thupg
+      string_regularize(line_string);
+      if (line_string[0]=='_'){
+	auto node = string_get_node(line_string);
+	double rv;
+	while(line_string.back()==' ' || line_string.back()=='\n' || line_string.back()=='\r') line_string.erase(line_string.size()-1);
+	sscanf(line_string.substr(line_string.find_last_of(' ')).c_str(),"%lf", &rv);
+	//cout<<node.first<<":"<<node.second.first<<":"<<node.second.second<<"="<<rv<<endl;
+	node_package_resist[node_id[node]]=rv;
+	continue;
+      }
 
       auto node1=string_get_node(line_string);
       auto node2=string_get_node(line_string);
@@ -261,6 +274,7 @@ int main(int argc, char ** argv)
 
   map<int,map<int,double> > final_row;
   map<int, double> final_b;
+  int n_package = 0;
   for(auto it: node_id){
     int id = it.second;
 
@@ -290,10 +304,13 @@ int main(int argc, char ** argv)
 
     //package connections
     if (node_package_resist.find(id)!=node_package_resist.end()){
+      n_package++;
       final_row[final_id[id]][final_id[id]]+=1.0f/node_package_resist[id];
       final_b[final_id[id]]+=node_package_voltage[id]/node_package_resist[id];
     }
   }
+
+  cout<<"n_package = " << n_package<< endl;
 
   for(auto it: node_id){
     int id = it.second;
