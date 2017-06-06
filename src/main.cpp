@@ -173,11 +173,14 @@ int main(int argc, char * argv[]) {
   double cg_time = mytimer();
   ierr = CG( A, data, b, x, 5000, 1e-4, niters, normr, normr0, &times[0], true);
   cg_time = mytimer() - cg_time;
-  std::cout<<"Process #"<<rank<<" run time = " <<cg_time<<" secs."<<std::endl;
+  if (rank == 0)
+    std::cout<<"Process #"<<rank<<" run time = " <<cg_time<<" secs."<<std::endl;
   if (ierr) HPCG_fout << "Error in call to CG: " << ierr << ".\n" << endl;
-  std::cout<<"norm="<<normr<<std::endl;
-  std::cout<<"niter="<<niters<<std::endl;
-
+  if (rank == 0){
+    std::cout<<"norm="<<normr<<std::endl;
+    std::cout<<"niter="<<niters<<std::endl;
+  }
+  
   std::vector<int> error_node_vector;
   int error_node_cnt=0;
   for(int i=0; i<geom->irow; i++){
