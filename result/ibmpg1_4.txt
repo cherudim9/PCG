@@ -1,0 +1,39 @@
+node_cnt=16327
+net_cnt=4
+Process 0 of 4 has 4082 rows.
+Process 0 of 4 has 18758 nonzeros.
+node_cnt=16327
+net_cnt=4
+Process 1 of 4 has 4082 rows.
+Process 1 of 4 has 19452 nonzeros.
+node_cnt=16327
+net_cnt=4
+Process 3 of 4 has 4081 rows.
+Process 3 of 4 has 18516 nonzeros.
+node_cnt=16327
+net_cnt=4
+Process 2 of 4 has 4082 rows.
+Process 2 of 4 has 19101 nonzeros.
+totalToBeSent = 3405 totalToBeReceived = 3405
+ ratio  = 6810 / 75827 = 8.98097%
+ For rank 1 of 4, number of neighbors = 2
+     rank 1 neighbor 0 send/recv length = 365/341
+     rank 1 neighbor 2 send/recv length = 517/355
+ For rank 3 of 4, number of neighbors = 2
+     rank 3 neighbor 0 send/recv length = 159/86
+     rank 3 neighbor 2 send/recv length = 421/469
+ For rank 0 of 4, number of neighbors = 3
+     rank 0 For rank 2 of 4, number of neighbors = 3
+     rank 2 neighbor 0 send/recv length = 283/409
+     rank 2 neighbor 1 send/recv length = 355 neighbor 1 send/recv length = 341/365
+     rank 0 neighbor 2 send/recv length = 409/283
+     rank 0 neighbor /517
+     rank 2 neighbor 3 send/recv length = 469/421
+3 send/recv length = 86/159
+Process #0 run time = 0.067713 secs.
+norm=0.00712883
+niter=254
+num of node with incorrect voltage = 0/4082
+num of node with incorrect voltage = 0/4082
+num of node with incorrect voltage = 0/4081
+num of node with incorrect voltage = 0/4082

@@ -1,0 +1,67 @@
+node_cnt=285344
+net_cnt=15
+node_cnt=285344
+net_cnt=15
+node_cnt=285344
+net_cnt=15
+node_cnt=285344
+net_cnt=15
+node_cnt=285344
+net_cnt=15
+node_cnt=285344
+net_cnt=15
+Process 1 of 6 has 47558 rows.
+Process 1 of 6 has 255965 nonzeros.
+Process 2 of 6 has 47557 rows.
+Process 2 of 6 has 236666 nonzeros.
+Process 4 of 6 has 47557 rows.
+Process 4 of 6 has 253962 nonzeros.
+Process 0 of 6 has 47558 rows.
+Process 0 of 6 has 263715 nonzeros.
+Process 5 of 6 has 47557 rows.
+Process 5 of 6 has 230966 nonzeros.
+Process 3 of 6 has 47557 rows.
+Process 3 of 6 has 267528 nonzeros.
+totalToBeSent = 156008 totalToBeReceived = 156008
+ ratio  = 312016 / 1508802 = 20.6797%
+ For rank 0 of 6, number of neighbors = 3
+     rank 0 neighbor 1 send/recv length = 10850/8965
+     rank 0 neighbor 2 send/recv length = 11558/8499
+     rank 0 neighbor 5 send/recv length = 136/186
+ For rank 1 of 6, number of neighbors = 5
+     rank 1 neighbor 0 send/recv length = 8965/10850
+     rank 1 neighbor 2 send/recv length = 14256/17109
+     rank 1 neighbor 3 send/recv length = 80/160
+     rank 1 neighbor 4 send/recv length = 48/88
+     rank 1 neighbor 5 send/recv length = 390/416
+ For rank 5 of 6, number of neighbors = 5
+     rank 5 neighbor 0 send/recv length = 186/136
+     rank 5 neighbor 1 send/recv length = 416/390
+     rank 5 neighbor 2 send/recv length = 1297/2227
+     rank 5 neighbor 3 send/recv length = 10873/13110
+     rank 5 neighbor 4 send/recv length = 15182/14576
+ For rank 4 of 6, number of neighbors = 4
+     rank 4 neighbor 1 send/recv length = 88/48
+     rank 4 neighbor 2 send/recv length = 2026/2334
+     rank 4 neighbor 3 send/recv length = 10270/10664
+     rank 4 neighbor 5 send/recv length = 14576/15182
+ For rank 3 of 6, number of neighbors = 4
+     rank 3 neighbor 1 send/recv length = 160/80
+     rank 3 neighbor 2 send/recv length = 354/354
+     rank 3 neighbor 4 send/recv length = 10664/10270
+     rank 3 neighbor 5 send/recv length = 13110/10873
+ For rank 2 of 6, number of neighbors = 5
+     rank 2 neighbor 0 send/recv length = 8499/11558
+     rank 2 neighbor 1 send/recv length = 17109/14256
+     rank 2 neighbor 3 send/recv length = 354/354
+     rank 2 neighbor 4 send/recv length = 2334/2026
+     rank 2 neighbor 5 send/recv length = 2227/1297
+Process #0 run time = 2.9273 secs.
+norm=0.0159694
+niter=509
+num of node with incorrect voltage = 0/47558
+num of node with incorrect voltage = 0/47558
+num of node with incorrect voltage = 0/47557
+num of node with incorrect voltage = 0/47557
+num of node with incorrect voltage = 0/47557
+num of node with incorrect voltage = 0/47557

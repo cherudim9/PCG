@@ -1,0 +1,107 @@
+node_cnt=4974178
+net_cnt=3
+node_cnt=4974178
+net_cnt=3
+node_cnt=4974178
+net_cnt=3
+node_cnt=4974178
+net_cnt=3
+node_cnt=4974178
+net_cnt=3
+node_cnt=4974178
+net_cnt=3
+node_cnt=4974178
+net_cnt=3
+node_cnt=4974178
+net_cnt=3
+Process 3 of 8 has 621772 rows.
+Process 3 of 8 has 2487088 nonzeros.
+Process 1 of 8 has 621773 rows.
+Process 1 of 8 has 3115621 nonzeros.
+Process 0 of 8 has 621773 rows.
+Process 0 of 8 has 3107931 nonzeros.
+Process 2 of 8 has 621772 rows.
+Process 2 of 8 has 2816452 nonzeros.
+Process 5 of 8 has 621772 rows.
+Process 5 of 8 has 2486325 nonzeros.
+Process 7 of 8 has 621772 rows.
+Process 7 of 8 has 2483385 nonzeros.
+Process 4 of 8 has 621772 rows.
+Process 4 of 8 has 2487088 nonzeros.
+Process 6 of 8 has 621772 rows.
+Process 6 of 8 has 2486082 nonzeros.
+totalToBeSent = 6502899 totalToBeReceived = 6502899
+ ratio  = 13005798 / 21469972 = 60.5767%
+ For rank 6 of 8, number of neighbors = 7
+     rank 6 neighbor 0 send/recv length = 1249/1249
+     rank 6 neighbor 1 send/recv length = 4997/4997
+     rank 6 neighbor 2 send/recv length = 109388/109388
+     rank 6 neighbor 3 send/recv length = 225331/225331
+     rank 6 neighbor 4 send/recv length = 225425/225425
+     rank 6 neighbor 5 send/recv length = 54391/54391
+     rank 6 neighbor 7 send/recv length = 981/981
+ For rank 7 of 8, number of neighbors = 7
+     rank 7 neighbor 0 send/recv length = 7701/7701
+     rank 7 neighbor 1 send/recv length = 1249/1249
+     rank 7 neighbor 2 send/recv length = 107984/107984
+     rank 7 neighbor 3 send/recv length = 224880/224880
+     rank 7 neighbor 4 send/recv length = 224692/224692
+     rank 7 neighbor 5 send/recv length = 55026/55026
+     rank 7 neighbor 6 send/recv length = 981/981
+ For rank 5 of 8, number of neighbors = 7
+     rank 5 neighbor 0 send/recv length = 62361/56928
+     rank 5 neighbor 1 send/recv length = 62768/57441
+     rank 5 neighbor 2 send/recv length = 113345/110459
+     rank 5 neighbor 3 send/recv length = 171561/171561
+     rank 5 neighbor 4 send/recv length = 171655/171655
+     rank 5 neighbor 6 send/recv length = 54391/54391
+     rank 5 neighbor 7 send/recv length = 55026/55026
+ For rank 1 of 8, number of neighbors = 7
+     rank 1 neighbor 0 send/recv length = 995/995
+     rank 1 neighbor 2 send/recv length = 108607/118658
+     rank 1 neighbor 3 send/recv length = 228495/249643
+     rank 1 neighbor 4 send/recv length = 228516/249663
+     rank 1 neighbor 5 send/recv length = 57441/62768
+     rank 1 neighbor 6 send/recv length = 4997/4997
+     rank 1 neighbor 7 send/recv length = 1249/1249
+ For rank 0 of 8, number of neighbors = 7
+     rank 0 neighbor 1 send/recv length = 995/995
+     rank 0 neighbor 2 send/recv length = 108084/118338
+     rank 0 neighbor 3 send/recv length = 226691/248311
+     rank 0 neighbor 4 send/recv length = 226678/248296
+     rank 0 neighbor 5 send/recv length = 56928/62361
+     rank 0 neighbor 6 send/recv length = 1249/1249
+     rank 0 neighbor 7 send/recv length = 7701/7701
+ For rank 2 of 8, number of neighbors = 7
+     rank 2 neighbor 0 send/recv length = 118338/108084
+     rank 2 neighbor 1 send/recv length = 118658/108607
+     rank 2 neighbor 3 send/recv length = 120138/132176
+     rank 2 neighbor 4 send/recv length = 120131/132162
+     rank 2 neighbor 5 send/recv length = 110459/113345
+     rank 2 neighbor 6 send/recv length = 109388/109388
+     rank 2 neighbor 7 send/recv length = 107984/107984
+ For rank 4 of 8, number of neighbors = 6
+     rank 4 neighbor 0 send/recv length = 248296/226678
+     rank 4 neighbor 1 send/recv length = 249663/228516
+     rank 4 neighbor 2 send/recv length = 132162/120131
+     rank 4 neighbor 5 send/recv length = 171655/171655
+     rank 4 neighbor 6 send/recv length = 225425/225425
+     rank 4 neighbor 7 send/recv length = 224692/224692
+ For rank 3 of 8, number of neighbors = 6
+     rank 3 neighbor 0 send/recv length = 248311/226691
+     rank 3 neighbor 1 send/recv length = 249643/228495
+     rank 3 neighbor 2 send/recv length = 132176/120138
+     rank 3 neighbor 5 send/recv length = 171561/171561
+     rank 3 neighbor 6 send/recv length = 225331/225331
+     rank 3 neighbor 7 send/recv length = 224880/224880
+Process #0 run time = 0.630056 secs.
+norm=0
+niter=0
+num of node with incorrect voltage = 0/621772
+num of node with incorrect voltage = 0/621772
+num of node with incorrect voltage = 0/621772
+num of node with incorrect voltage = 0/621772
+num of node with incorrect voltage = 0/621772
+num of node with incorrect voltage = 0/621772
+num of node with incorrect voltage = 0/621773
+num of node with incorrect voltage = 0/621773

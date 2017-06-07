@@ -1,0 +1,19 @@
+node_cnt=126905
+net_cnt=8
+node_cnt=126905
+net_cnt=8
+Process 0 of 2 has 63453 rows.
+Process 0 of 2 has 273937 nonzeros.
+Process 1 of 2 has 63452 rows.
+Process 1 of 2 has 268958 nonzeros.
+totalToBeSent = 81705 totalToBeReceived = 81705
+ ratio  = 163410 / 542895 = 30.0997%
+ For rank 0 of 2, number of neighbors = 1
+     rank 0 neighbor 1 send/recv length = 41906/39799
+ For rank 1 of 2, number of neighbors = 1
+     rank 1 neighbor 0 send/recv length = 39799/41906
+Process #0 run time = 1.29162 secs.
+norm=0.00785387
+niter=394
+num of node with incorrect voltage = 0/63452
+num of node with incorrect voltage = 0/63453

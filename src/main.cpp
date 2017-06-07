@@ -193,11 +193,12 @@ int main(int argc, char * argv[]) {
     }
   } 
 
+/*
   for(int i = 0; i < error_node_vector.size(); i++){
     int node_id = error_node_vector[i];
     std::cout << id_to_node[node_id].first << "," << id_to_node[node_id].second.first << "," << id_to_node[node_id].second.second  << " : " << id_to_voltage[node_id] <<" " << x.values[node_id-1]<<std::endl;
   }
-
+*/
 
   std::cout << "num of node with incorrect voltage = " << error_node_cnt << "/" << geom->irow << std::endl;
 

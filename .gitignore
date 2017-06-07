@@ -4,3 +4,6 @@ obj/*
 RemoteSystemsTempFiles/*
 datagen/*.spice
 datagen/*.solution
+project*.txt
+datagen/datagen
+datagen/*.data

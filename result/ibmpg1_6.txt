@@ -1,0 +1,63 @@
+node_cnt=16327
+net_cnt=4
+node_cnt=16327
+net_cnt=4
+Process 1 of 6 has 2721 rows.
+Process 1 of 6 has 12920 nonzeros.
+node_cnt=16327
+net_cnt=4
+Process 3 of 6 has 2721 rows.
+Process 3 of 6 has 12572 nonzeros.
+Process 0 of 6 has 2722 rows.
+Process 0 of 6 has 12328 nonzeros.
+node_cnt=16327
+net_cnt=4
+Process 4 of 6 has 2721 rows.
+Process 4 of 6 has 12677 nonzeros.
+node_cnt=16327
+net_cnt=4
+Process 2 of 6 has 2721 rows.
+Process 2 of 6 has 12962 nonzeros.
+node_cnt=16327
+net_cnt=4
+Process 5 of 6 has 2721 rows.
+Process 5 of 6 has 12368 nonzeros.
+totalToBeSent = 4596 totalToBeReceived = 4596
+ ratio  = 9192 / 75827 = 12.1223%
+ For rank 1 of 6 For rank 2 of 6, number of neighbors = 3
+     rank 2 neighbor 0 send/recv length = 50/31, number of neighbors = 3
+     rank 1 neighbor 0 send/recv length = 303/283
+     rank 
+     rank 2 neighbor 1 send/recv length = 252/274
+     rank 2 For rank 4 of 6, number of neighbors = 3
+     rank 4 neighbor 0 send/recv length = 51/1 neighbor 2 send/recv length = 274/252
+     rank 1 neighbor 3 send/recv length = 220 neighbor 3 send/recv length = 399/304
+35
+     rank 4 neighbor 3 send/recv length = 210/210
+     rank 4 neighbor /89
+5 send/recv length = 549/457
+ For rank 5 of 6 For rank 0 of 6, number of neighbors = 5
+     rank 0 neighbor 1 send/recv length = , number of neighbors = 3
+     rank 5 neighbor 0 send/recv length = 138/80
+     rank 283/303
+     rank 0 neighbor 2 send/recv length = 5 neighbor 3 send/recv length = 63/84
+     rank 31/50
+     rank 0 neighbor 35 neighbor 4 send/recv length = 457/549
+ send/recv length = 287/227
+     rank 0 neighbor 4 send/recv length = 35/51
+     rank 0 neighbor 5 send/recv length = 80/138
+ For rank 3 of 6, number of neighbors = 5
+     rank 3 neighbor 0 send/recv length = 227/287
+     rank 3 neighbor 1 send/recv length = 89/220
+     rank 3 neighbor 2 send/recv length = 304/399
+     rank 3 neighbor 4 send/recv length = 210/210
+     rank 3 neighbor 5 send/recv length = 84/63
+Process #0 run time = 0.217282 secs.
+norm=0.00702922
+niter=254
+num of node with incorrect voltage = 0/2721
+num of node with incorrect voltage = 0/2721
+num of node with incorrect voltage = 0/2721
+num of node with incorrect voltage = 0/2721
+num of node with incorrect voltage = 0/2722
+num of node with incorrect voltage = 0/2721

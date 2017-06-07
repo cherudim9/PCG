@@ -1,0 +1,59 @@
+node_cnt=540220
+net_cnt=15
+node_cnt=540220
+net_cnt=15
+node_cnt=540220
+net_cnt=15
+node_cnt=540220
+net_cnt=15
+node_cnt=540220
+net_cnt=15
+node_cnt=540220
+net_cnt=15
+Process 0 of 6 has 90037 rows.
+Process 0 of 6 has 449260 nonzeros.
+Process 1 of 6 has 90037 rows.
+Process 1 of 6 has 449839 nonzeros.
+Process 2 of 6 has 90037 rows.
+Process 2 of 6 has 449367 nonzeros.
+Process 5 of 6 has 90036 rows.
+Process 5 of 6 has 445972 nonzeros.
+Process 4 of 6 has 90036 rows.
+Process 4 of 6 has 448966 nonzeros.
+Process 3 of 6 has 90037 rows.
+Process 3 of 6 has 448554 nonzeros.
+totalToBeSent = 84731 totalToBeReceived = 84731
+ ratio  = 169462 / 2691958 = 6.29512%
+ For rank 4 of 6, number of neighbors = 2
+     rank 4 neighbor 3 send/recv length = 260/260
+     rank 4 neighbor 5 send/recv length = 6866/3633
+ For rank 2 of 6, number of neighbors = 3
+     rank 2 neighbor 1 send/recv length = 520/520
+     rank 2 neighbor 3 send/recv length = 49/48
+     rank 2 neighbor 5 send/recv length = 12798/6492
+ For rank 1 of 6, number of neighbors = 3
+     rank 1 neighbor 0 send/recv length = 520/520
+     rank 1 neighbor 2 send/recv length = 520/520
+     rank 1 neighbor 5 send/recv length = 12818/6567
+ For rank 0 of 6, number of neighbors = 2
+     rank 0 neighbor 1 send/recv length = 520/520
+     rank 0 neighbor 5 send/recv length = 12987/6686
+ For rank 3 of 6, number of neighbors = 3
+     rank 3 neighbor 2 send/recv length = 48/49
+     rank 3 neighbor 4 send/recv length = 260/260
+     rank 3 neighbor 5 send/recv length = 8700/4487
+ For rank 5 of 6, number of neighbors = 5
+     rank 5 neighbor 0 send/recv length = 6686/12987
+     rank 5 neighbor 1 send/recv length = 6567/12818
+     rank 5 neighbor 2 send/recv length = 6492/12798
+     rank 5 neighbor 3 send/recv length = 4487/8700
+     rank 5 neighbor 4 send/recv length = 3633/6866
+Process #0 run time = 6.63185 secs.
+norm=0.00707724
+niter=530
+num of node with incorrect voltage = 0/90037
+num of node with incorrect voltage = 0/90037
+num of node with incorrect voltage = 0/90037
+num of node with incorrect voltage = 0/90036
+num of node with incorrect voltage = 0/90036
+num of node with incorrect voltage = 0/90037

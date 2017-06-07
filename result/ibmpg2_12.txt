@@ -1,0 +1,161 @@
+node_cnt=126905
+net_cnt=8
+node_cnt=126905
+net_cnt=8
+node_cnt=126905
+net_cnt=8
+Process 7 of 12 has 10575 rows.
+Process 7 of 12 has 47608 nonzeros.
+Process 8 of 12 has 10575 rows.
+Process 8 of 12 has 47493 nonzeros.
+node_cnt=126905
+net_cnt=8
+Process 3 of 12 has 10576 rows.
+Process 3 of 12 has 46142 nonzeros.
+Process 0 of 12 has 10576 rows.
+Process 0 of 12 has 46917 nonzeros.
+node_cnt=126905
+net_cnt=8
+node_cnt=126905
+net_cnt=8
+node_cnt=126905
+net_cnt=8
+node_cnt=126905
+net_cnt=8
+node_cnt=126905
+net_cnt=8
+Process 10 of 12 has 10575 rows.
+Process 10 of 12 has 42300 nonzeros.
+node_cnt=126905
+net_cnt=8
+Process 2 of 12 has 10576 rows.
+Process 2 of 12 has 47380 nonzeros.
+Process 9 of 12 has 10575 rows.
+Process 9 of 12 has 43254 nonzeros.
+Process 4 of 12 has 10576 rows.
+Process 4 of 12 has 42180 nonzeros.
+Process 1 of 12 has 10576 rows.
+Process 1 of 12 has 47323 nonzeros.
+Process 6 of 12 has 10575 rows.
+Process 6 of 12 has 47494 nonzeros.
+node_cnt=126905
+net_cnt=8
+Process 11 of 12 has 10575 rows.
+Process 11 of 12 has 40800 nonzeros.
+node_cnt=126905
+net_cnt=8
+Process 5 of 12 has 10575 rows.
+Process 5 of 12 has 44004 nonzeros.
+totalToBeSent = 7089 totalToBeReceived = 6840
+totalToBeSent = 6462 totalToBeReceived = 6010
+totalToBeSent = 6335 totalToBeReceived = 6009
+totalToBeSent = 6471 totalToBeReceived = 6015
+totalToBeSent = 6607 totalToBeReceived = 6089
+totalToBeSent = 6420 totalToBeReceived = 5983
+totalToBeSent = 6688 totalToBeReceived = 6013
+totalToBeSent = 7797 totalToBeReceived = 7693
+totalToBeSent = 8124 totalToBeReceived = 9834
+ For rank 3 of 12, number of neighbors = 9
+     rank 3 neighbor 2 send/recv length = 23/22
+     rank 3 neighbor 4 send/recv length = 1/1
+     rank 3 neighbor 5 send/recv length = 266/266
+     rank 3 neighbor 6 send/recv length = 648/648
+     rank 3 neighbor 7 send/recv length = 640/640
+     rank 3 neighbor 8 send/recv length = 611/611
+     rank 3 neighbor 9 send/recv length = 143/143
+     rank 3 neighbor 10 send/recv length = 1339/1339
+     rank 3 neighbor 11 send/recv length = 3418/3170
+totalToBeSent = 10803 totalToBeReceived = 10803
+ For rank 7 of 12, number of neighbors = 7
+     rank 7 neighbor 3 send/recv length = 640/640
+     rank 7 neighbor 4 send/recv length = 2928/2928
+     rank 7 neighbor 5 send/recv length = 1719/1719
+     rank 7 neighbor 6 send/recv length = 114/114
+     rank 7 neighbor 8 send/recv length = 114/114
+     rank 7 neighbor 9 send/recv length = 707/381
+     rank 7 neighbor 11 send/recv length = 113/113
+ For rank 8 of 12, number of neighbors = 5
+     rank 8 neighbor 3 send/recv length = 611/611
+     rank 8 neighbor 4 send/recv length = 2884/2884
+     rank 8 neighbor 5 send/recv length = 1793/1793
+     rank 8 neighbor 7 send/recv length = 114/114
+     rank 8 neighbor 9 send/recv length = 1069/613
+totalToBeSent = 10578 totalToBeReceived = 10578
+totalToBeSent = 11093 totalToBeReceived = 12600
+ For rank 1 of 12, number of neighbors = 5
+     rank 1 neighbor 0 send/recv length = 97/98
+     rank 1 neighbor 2 send/recv length = 120/120
+     rank 1 neighbor 9 send/recv length = 1046/1046
+     rank 1 neighbor 10 send/recv length = 4076/4076
+     rank 1 neighbor 11 send/recv length = 1268/749
+ For rank 2 of 12, number of neighbors = 4
+     rank 2 neighbor 1 send/recv length = 120/120
+     rank 2 neighbor 3 send/recv length = 22/23
+     rank 2 neighbor 10 send/recv length = 5160/5160
+     rank 2 neighbor 11 send/recv length = 1118/680
+ For rank 0 of 12, number of neighbors = 3
+     rank 0 neighbor 1 send/recv length = 98/97
+     rank 0 neighbor 9 send/recv length = 4890/4890
+     rank 0 neighbor 11 send/recv length = 1700/1026
+ For rank 5 of 12, number of neighbors = 7
+     rank 5 neighbor 3 send/recv length = 266/266
+     rank 5 neighbor 4 send/recv length = 1130/1130
+     rank 5 neighbor 6 send/recv length = 1853/1853
+     rank 5 neighbor 7 send/recv length = 1719/1719
+     rank 5 neighbor 8 send/recv length = 1793/1793
+     rank 5 neighbor 9 send/recv length = 917/694
+     rank 5 neighbor 11 send/recv length = 119/238
+ For rank 11 of 12, number of neighbors = 8
+     rank 11 neighbor 0 send/recv length = 1026/1700
+     rank 11 neighbor 1 send/recv length = 749/1268
+     rank 11 neighbor 2 send/recv length = 680/1118
+     rank 11 neighbor 3 send/recv length = 3170/3418
+     rank 11 neighbor 5 send/recv length = 238/119
+     rank 11 neighbor 7 send/recv length = 113/113
+     rank 11 neighbor 9 send/recv length = 2034/1984
+     rank 11 neighbor 10 send/recv length = 114/114
+ For rank 10 of 12, number of neighbors = 5
+     rank 10 neighbor 1 send/recv length = 4076/4076
+     rank 10 neighbor 2 send/recv length = 5160/5160
+     rank 10 neighbor 3 send/recv length = 1339/1339
+     rank 10 neighbor 9 send/recv length = 114/114
+     rank 10 neighbor 11 send/recv length = 114/114
+ For rank 4 of 12, number of neighbors = 6
+     rank 4 neighbor 3 send/recv length = 1/1
+     rank 4 neighbor 5 send/recv length = 1130/1130
+     rank 4 neighbor 6 send/recv length = 2901/2901
+     rank 4 neighbor 7 send/recv length = 2928/2928
+     rank 4 neighbor 8 send/recv length = 2884/2884
+     rank 4 neighbor 9 send/recv length = 734/734
+ For rank 9 of 12, number of neighbors = 10
+     rank 9 neighbor 0 send/recv length = 4890/4890
+     rank 9 neighbor 1 send/recv length = 1046/1046
+     rank 9 neighbor 3 send/recv length = 143/143
+     rank 9 neighbor 4 send/recv length = 734/734
+     rank 9 neighbor 5 send/recv length = 694/917
+     rank 9 neighbor 6 send/recv length = 494/946
+     rank 9 neighbor 7 send/recv length = 381/707
+     rank 9 neighbor 8 send/recv length = 613/1069
+     rank 9 neighbor 10 send/recv length = 114/114
+     rank 9 neighbor 11 send/recv length = 1984/2034
+ For rank 6 of 12, number of neighbors = 5
+     rank 6 neighbor 3 send/recv length = 648/648
+     rank 6 neighbor 4 send/recv length = 2901/2901
+     rank 6 neighbor 5 send/recv length = 1853/1853
+     rank 6 neighbor 7 send/recv length = 114/114
+     rank 6 neighbor 9 send/recv length = 946/494
+Process #0 run time = 0.940677 secs.
+norm=0.00777635
+niter=482
+num of node with incorrect voltage = 0/10576
+num of node with incorrect voltage = 0/10575
+num of node with incorrect voltage = 0/10575
+num of node with incorrect voltage = 0/10576
+num of node with incorrect voltage = 0/10575
+num of node with incorrect voltage = 0/10576
+num of node with incorrect voltage = 0/10575
+num of node with incorrect voltage = 0/10576
+num of node with incorrect voltage = 0/10575
+num of node with incorrect voltage = 0/10575
+num of node with incorrect voltage = 0/10575
+num of node with incorrect voltage = 0/10576

@@ -1,0 +1,11 @@
+node_cnt=952618
+net_cnt=12
+Process 0 of 1 has 952618 rows.
+Process 0 of 1 has 4054056 nonzeros.
+totalToBeSent = 0 totalToBeReceived = 0
+ ratio  = 0 / 4054056 = 0%
+ For rank 0 of 1, number of neighbors = 0
+Process #0 run time = 41.5323 secs.
+norm=0.0112734
+niter=337
+num of node with incorrect voltage = 0/952618
