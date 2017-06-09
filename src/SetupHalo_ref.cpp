@@ -47,12 +47,56 @@ using std::endl;
 
   @see ExchangeHalo
 */
+
+void ExchangeRowRange(SparseMatrix & A, int * & RowRange){
+  int size, rank; 
+  MPI_Comm_size(MPI_COMM_WORLD, &size);
+  MPI_Comm_rank(MPI_COMM_WORLD, &rank);
+  int MPI_MY_TAG = 99;
+  MPI_Request * request = new MPI_Request[size];
+  
+  RowRange = new int[2*size];
+  RowRange[2*rank]=A.geom->irow_begin;
+  RowRange[2*rank+1]=A.geom->irow_end;
+
+  for(int i=0; i<size; i++)
+    if (i!=rank){
+      MPI_Irecv(RowRange+2*i, 2, MPI_INT, i, MPI_MY_TAG, MPI_COMM_WORLD, request+i);
+    }
+
+  int * sendBuffer = RowRange+2*rank;
+  for(int i=0; i<size; i++)
+    if (i!=rank){
+      MPI_Send(sendBuffer, 2, MPI_INT, i, MPI_MY_TAG, MPI_COMM_WORLD);
+    }
+
+  MPI_Status status;
+  for(int i=0; i<size; i++)
+    if (i!=rank)
+      if (MPI_Wait(request+i, &status))
+	std::exit(-1);
+
+  std::cout<<"Rank#"<<rank<<"   ";
+  for(int i=0; i<size; i++)
+    std::cout<<i<<":"<<RowRange[i*2]<<"->"<<RowRange[i*2+1]<<", ";
+  std::cout<<std::endl;
+}
+
+int GetRankOfMatrixRow(Geometry * geom, int * RowRange, int curIndex){
+  int size=geom->size;
+  int rank=geom->rank;
+  for(int i=0; i<size; i++)
+    if (curIndex>=RowRange[2*i] && curIndex<=RowRange[2*i+1])
+      return i;
+  return -1;
+}
+
 void SetupHalo_ref(SparseMatrix & A) {
 
   // Extract Matrix pieces
 
   local_int_t localNumberOfRows = A.localNumberOfRows;
-  char  * nonzerosInRow = A.nonzerosInRow;
+  local_int_t  * nonzerosInRow = A.nonzerosInRow;
   global_int_t ** mtxIndG = A.mtxIndG;
   local_int_t ** mtxIndL = A.mtxIndL;
 
@@ -67,11 +111,10 @@ void SetupHalo_ref(SparseMatrix & A) {
 
 #else // Run this section if compiling for MPI
 
-  // Scan global IDs of the nonzeros in the matrix.  Determine if the column ID matches a row ID.  If not:
-  // 1) We call the ComputeRankOfMatrixRow function, which tells us the rank of the processor owning the row ID.
-  //  We need to receive this value of the x vector during the halo exchange.
-  // 2) We record our row ID since we know that the other processor will need this value from us, due to symmetry.
-
+  int * RowRange = 0;
+  ExchangeRowRange(A, RowRange);
+  assert(RowRange!=0);
+  
   std::map< int, std::set< global_int_t> > sendList, receiveList;
   typedef std::map< int, std::set< global_int_t> >::iterator map_iter;
   typedef std::set<global_int_t>::iterator set_iter;
@@ -82,7 +125,9 @@ void SetupHalo_ref(SparseMatrix & A) {
     global_int_t currentGlobalRow = A.localToGlobalMap[i];
     for (int j=0; j<nonzerosInRow[i]; j++) {
       global_int_t curIndex = mtxIndG[i][j];
-      int rankIdOfColumnEntry = ComputeRankOfMatrixRow(*(A.geom), curIndex);
+      //int rankIdOfColumnEntry = ComputeRankOfMatrixRow(*(A.geom), curIndex);
+      int rankIdOfColumnEntry = GetRankOfMatrixRow(A.geom, RowRange, curIndex);
+      assert(rankIdOfColumnEntry!=-1);
 #ifdef HPCG_DETAILED_DEBUG
       HPCG_fout << "rank, row , col, globalToLocalMap[col] = " << A.geom->rank << " " << currentGlobalRow << " "
           << curIndex << " " << A.globalToLocalMap[curIndex] << endl;

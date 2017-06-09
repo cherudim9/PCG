@@ -39,14 +39,18 @@ int ComputeProlongation_ref(const SparseMatrix & Af, Vector & xf) {
 
   double * xfv = xf.values;
   double * xcv = Af.mgData->xc->values;
-  local_int_t * f2c = Af.mgData->f2cOperator;
+  local_int_t ** c2f = Af.mgData->c2fOperator;
   local_int_t nc = Af.mgData->rc->localLength;
 
 #ifndef HPCG_NO_OPENMP
 #pragma omp parallel for
 #endif
 // TODO: Somehow note that this loop can be safely vectorized since f2c has no repeated indices
-  for (local_int_t i=0; i<nc; ++i) xfv[f2c[i]] += xcv[i]; // This loop is safe to vectorize
+  for (local_int_t i=0; i<nc; ++i){
+    xfv[c2f[i][0]] += xcv[i];
+    if (c2f[i][1] != -1 && c2f[i][1] < Af.localNumberOfRows)
+      xfv[c2f[i][1]] += xcv[i];
+  }
 
   return 0;
 }

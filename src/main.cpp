@@ -115,6 +115,7 @@ int main(int argc, char * argv[]) {
     data_stream>>voltage;
     id_to_voltage[id]=voltage;
   }
+  data_stream.close();
 
   std::cout<<"node_cnt="<<node_cnt<<std::endl;
   std::cout<<"net_cnt="<<net_cnt<<std::endl;
@@ -129,27 +130,20 @@ int main(int argc, char * argv[]) {
 
   Vector b, x;
   GenerateProblem(A, &b, &x, id_to_neighbors, id_to_b);
+  id_to_neighbors.clear();
+  id_to_b.clear();
   SetupHalo(A);
 
-  int numberOfMgLevels = 0; // Number of levels including first
+  int numberOfMgLevels; // Number of levels including first
+  sscanf(argv[2], "%d", &numberOfMgLevels);
   SparseMatrix * curLevelMatrix = &A;
-  for (int level = 1; level< numberOfMgLevels; ++level) {
+  for (int level = 1; level<= numberOfMgLevels; ++level) {
     GenerateCoarseProblem(*curLevelMatrix);
     curLevelMatrix = curLevelMatrix->Ac; // Make the just-constructed coarse grid the next level
   }
 
   setup_time = mytimer() - setup_time; // Capture total time of setup
   times[9] = setup_time; // Save it for reporting
-
-  curLevelMatrix = &A;
-  Vector * curb = &b;
-  Vector * curx = &x;
-  for (int level = 0; level< numberOfMgLevels; ++level) {
-    //CheckProblem(*curLevelMatrix, curb, curx, curxexact);
-     curLevelMatrix = curLevelMatrix->Ac; // Make the nextcoarse grid the next level
-     curb = 0; // No vectors after the top level
-     curx = 0;
-  }
 
   CGData data;
   InitializeSparseCGData(A, data);
@@ -171,7 +165,7 @@ int main(int argc, char * argv[]) {
 
   ZeroVector(x); // Zero out x
   double cg_time = mytimer();
-  ierr = CG( A, data, b, x, 5000, 1e-4, niters, normr, normr0, &times[0], true);
+  ierr = CG( A, data, b, x, 1000, 1e-4, niters, normr, normr0, &times[0], true);
   cg_time = mytimer() - cg_time;
   if (rank == 0)
     std::cout<<"Process #"<<rank<<" run time = " <<cg_time<<" secs."<<std::endl;

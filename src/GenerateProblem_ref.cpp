@@ -48,7 +48,7 @@ void GenerateProblem_ref(SparseMatrix & A, Vector * b, Vector * x, std::map<int,
   assert(totalNumberOfRows>0); // Throw an exception of the number of rows is less than zero (can happen if int overflow)
 
   // Allocate arrays that are of length localNumberOfRows
-  char * nonzerosInRow = new char[localNumberOfRows];
+  local_int_t * nonzerosInRow = new local_int_t[localNumberOfRows];
   global_int_t ** mtxIndG = new global_int_t*[localNumberOfRows];
   local_int_t  ** mtxIndL = new local_int_t*[localNumberOfRows];
   double ** matrixValues = new double*[localNumberOfRows];
@@ -116,7 +116,7 @@ void GenerateProblem_ref(SparseMatrix & A, Vector * b, Vector * x, std::map<int,
 #ifdef HPCG_DETAILED_DEBUG
     HPCG_fout << " rank, globalRow, localRow = " << A.geom->rank << " " << currentGlobalRow << " " << A.globalToLocalMap[currentGlobalRow] << endl;
 #endif
-    char numberOfNonzerosInRow = 0;
+    local_int_t numberOfNonzerosInRow = 0;
     double * currentValuePointer = matrixValues[currentLocalRow]; // Pointer to current value in current row
     global_int_t * currentIndexPointerG = mtxIndG[currentLocalRow]; // Pointer to current index in current row
 

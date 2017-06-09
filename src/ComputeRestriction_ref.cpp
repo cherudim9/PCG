@@ -43,12 +43,23 @@ int ComputeRestriction_ref(const SparseMatrix & A, const Vector & rf) {
   double * rfv = rf.values;
   double * rcv = A.mgData->rc->values;
   local_int_t * f2c = A.mgData->f2cOperator;
+
   local_int_t nc = A.mgData->rc->localLength;
+  local_int_t nf = rf.localLength;
+
 
 #ifndef HPCG_NO_OPENMP
 #pragma omp parallel for
 #endif
-  for (local_int_t i=0; i<nc; ++i) rcv[i] = rfv[f2c[i]] - Axfv[f2c[i]];
+  for (local_int_t i=0; i<nc; ++i) 
+    rcv[i] = 0.0;
+
+#ifndef HPCG_NO_OPENMP
+#pragma omp parallel for
+#endif    
+  for(local_int_t i=0; i<nf; i++)
+    if (f2c[i]!=-1)
+      rcv[f2c[i]] += rfv[i] - Axfv[i];
 
   return 0;
 }

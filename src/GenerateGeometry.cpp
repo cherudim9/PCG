@@ -49,10 +49,6 @@ using std::endl;
 void GenerateGeometry(int size, int rank, int numThreads, int nrow,
   Geometry * geom)
 {
-#ifdef HPCG_DEBUG
-  if (rank==0)
- 
-#endif
   geom->size = size;
   geom->rank = rank;
   geom->numThreads = numThreads;
