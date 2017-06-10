@@ -136,10 +136,17 @@ int main(int argc, char * argv[]) {
 
   int numberOfMgLevels; // Number of levels including first
   sscanf(argv[2], "%d", &numberOfMgLevels);
+  int numberOfSubLevels;
+  sscanf(argv[3], "%d", &numberOfSubLevels);
   SparseMatrix * curLevelMatrix = &A;
   for (int level = 1; level<= numberOfMgLevels; ++level) {
-    GenerateCoarseProblem(*curLevelMatrix);
-    curLevelMatrix = curLevelMatrix->Ac; // Make the just-constructed coarse grid the next level
+    for(int sublevel = 1; sublevel <= numberOfSubLevels; ++ sublevel){
+      if (sublevel == 1)
+	GenerateCoarseProblem(*curLevelMatrix, 2);
+      else
+	GenerateCoarseProblem(*curLevelMatrix, 0);
+      curLevelMatrix = curLevelMatrix->Ac; // Make the just-constructed coarse grid the next level
+    }
   }
 
   setup_time = mytimer() - setup_time; // Capture total time of setup

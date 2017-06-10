@@ -214,7 +214,7 @@ void GenerateCoarseCoef(const SparseMatrix * Af, SparseMatrix * Ac, local_int_t 
   return;
 }
 
-void GenerateCoarseProblem(const SparseMatrix & Af) {
+void GenerateCoarseProblem(const SparseMatrix & Af, int numberOfSmootherSteps) {
 
   local_int_t nf = Af.localNumberOfRows;
   local_int_t nc;
@@ -224,7 +224,7 @@ void GenerateCoarseProblem(const SparseMatrix & Af) {
   geomc->size = Af.geom->size;
   geomc->rank = Af.geom->rank;
   geomc->numThreads = Af.geom->numThreads;
-  geomc->grow = Af.geom->grow/2;
+  geomc->grow = Af.geom->grow/2 + (Af.geom->grow % 2);
   geomc->irow_begin = Af.geom->irow_begin / 2 + 
     ((Af.geom->irow_begin % 2 == 0) ? 0 : 1 );
   geomc->irow_end = Af.geom->irow_end / 2;
@@ -275,7 +275,7 @@ void GenerateCoarseProblem(const SparseMatrix & Af) {
   InitializeVector(*Axf, Af.localNumberOfColumns);
   Af.Ac = Ac;
   MGData * mgData = new MGData;
-  InitializeMGData(f2cOperator, c2fOperator, rc, xc, Axf, *mgData);
+  InitializeMGData(f2cOperator, c2fOperator, rc, xc, Axf, *mgData, numberOfSmootherSteps);
   Af.mgData = mgData;
 
   return;

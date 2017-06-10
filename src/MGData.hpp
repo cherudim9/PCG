@@ -48,9 +48,10 @@ typedef struct MGData_STRUCT MGData;
  @param[in] f2cOperator -
  @param[out] data the data structure for CG vectors that will be allocated to get it ready for use in CG iterations
  */
-inline void InitializeMGData(local_int_t * f2cOperator, local_int_t ** c2fOperator, Vector * rc, Vector * xc, Vector * Axf, MGData & data) {
-  data.numberOfPresmootherSteps = 3;
-  data.numberOfPostsmootherSteps = 3;
+inline void InitializeMGData(local_int_t * f2cOperator, local_int_t ** c2fOperator, Vector * rc, Vector * xc, Vector * Axf, MGData & data,
+			     int _numberOfSmootherSteps = 2) {
+  data.numberOfPresmootherSteps = _numberOfSmootherSteps;
+  data.numberOfPostsmootherSteps = _numberOfSmootherSteps;
   data.f2cOperator = f2cOperator; // Space for injection operator
   data.c2fOperator = c2fOperator;
   data.rc = rc;

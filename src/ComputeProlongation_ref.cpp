@@ -24,6 +24,10 @@
 
 #include "ComputeProlongation_ref.hpp"
 
+#ifndef HPCG_NO_MPI
+#include <mpi.h>
+#endif
+
 /*!
   Routine to compute the coarse residual vector.
 
@@ -48,9 +52,33 @@ int ComputeProlongation_ref(const SparseMatrix & Af, Vector & xf) {
 // TODO: Somehow note that this loop can be safely vectorized since f2c has no repeated indices
   for (local_int_t i=0; i<nc; ++i){
     xfv[c2f[i][0]] += xcv[i];
-    if (c2f[i][1] != -1 && c2f[i][1] < Af.localNumberOfRows)
-      xfv[c2f[i][1]] += xcv[i];
+    if (c2f[i][1] != -1){
+      if  (c2f[i][1] < Af.localNumberOfRows)
+	xfv[c2f[i][1]] += xcv[i];
+      else{
+	/*
+#ifndef HPCG_NO_MPI
+	double value = xcv[i];
+	MPI_Send(&value, 1, MPI_DOUBLE, Af.geom->rank+1, 97, MPI_COMM_WORLD);
+#endif
+	*/
+      }
+    }
   }
+
+  /*
+#ifndef HPCG_NO_MPI
+  if (Af.geom->irow_begin % 2 == 1){
+    double value;
+    MPI_Request request;
+    MPI_Irecv(&value, 1, MPI_DOUBLE, Af.geom->rank-1, 97, MPI_COMM_WORLD, &request);
+    MPI_Status status;
+    if (MPI_Wait(&request, &status)){
+      std::exit(-1);
+    }
+  }
+#endif
+  */
 
   return 0;
 }
