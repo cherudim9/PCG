@@ -47,7 +47,7 @@ void GenerateCoarseCoef(const SparseMatrix * Af, SparseMatrix * Ac, local_int_t 
   }
 #endif
 
-  local_int_t numberOfNonzerosPerRow = 400;
+  local_int_t numberOfNonzerosPerRow = Ac->geom->numberOfNonzerosPerRow;
   global_int_t totalNumberOfRows = Ac->geom->grow;
   local_int_t * nonzerosInRow = new local_int_t[nc];
   global_int_t ** mtxIndG = new global_int_t * [nc];
@@ -220,6 +220,7 @@ void GenerateCoarseProblem(const SparseMatrix & Af) {
   local_int_t nc;
 
   Geometry * geomc = new Geometry();
+  geomc->numberOfNonzerosPerRow = Af.geom->numberOfNonzerosPerRow * 2;
   geomc->size = Af.geom->size;
   geomc->rank = Af.geom->rank;
   geomc->numThreads = Af.geom->numThreads;

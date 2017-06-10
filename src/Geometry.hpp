@@ -54,6 +54,7 @@ struct Geometry_STRUCT {
   int irow_end;
   
   int grow;
+  int numberOfNonzerosPerRow;
 
   local_int_t nx;   //!< Number of x-direction grid points for each local subdomain
   local_int_t ny;   //!< Number of y-direction grid points for each local subdomain

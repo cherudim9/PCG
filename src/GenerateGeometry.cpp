@@ -49,6 +49,7 @@ using std::endl;
 void GenerateGeometry(int size, int rank, int numThreads, int nrow,
   Geometry * geom)
 {
+  geom->numberOfNonzerosPerRow = 50;
   geom->size = size;
   geom->rank = rank;
   geom->numThreads = numThreads;
