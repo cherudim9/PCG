@@ -86,7 +86,9 @@ typedef struct Geometry_STRUCT Geometry;
   @param[in] index The global row index
 
   @return Returns the MPI rank of the process assigned the row
-*/
+i*/
+
+/*
 inline int ComputeRankOfMatrixRow(const Geometry & geom, global_int_t index) {
   int seg = geom.grow / geom.size;
   int par = (geom.grow % geom.size) * seg + (geom.grow % geom.size) - 1;
@@ -97,7 +99,7 @@ inline int ComputeRankOfMatrixRow(const Geometry & geom, global_int_t index) {
     rank = (index - geom.grow % geom.size) / seg;
   return rank;
 }
-
+*/
 
 /*!
  Destructor for geometry data.

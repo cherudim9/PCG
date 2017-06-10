@@ -36,6 +36,15 @@ void GenerateCoarseCoef(const SparseMatrix * Af, SparseMatrix * Ac, local_int_t 
 
   local_int_t nf = Af->localNumberOfRows;
 
+  if (Af->geom->irow_begin%2==1){
+    //pass this row to last rank
+    int rank = Af->geom->rank;
+    int MPI_MY_TAG = 98;
+    MPI_Send(Af->nonzerosInRow+0, 1, MPI_INT, rank-1, MPI_MY_TAG, MPI_COMM_WORLD);
+    MPI_Send(Af->mtxIndG[0], Af->nonzerosInRow[0], MPI_LONG_LONG, rank-1, MPI_MY_TAG, MPI_COMM_WORLD);
+    MPI_Send(Af->matrixValues[0], Af->nonzerosInRow[0], MPI_DOUBLE, rank-1, MPI_MY_TAG, MPI_COMM_WORLD);
+  }
+
   local_int_t numberOfNonzerosPerRow = 400;
   global_int_t totalNumberOfRows = Ac->geom->grow;
   local_int_t * nonzerosInRow = new local_int_t[nc];
@@ -79,9 +88,46 @@ void GenerateCoarseCoef(const SparseMatrix * Af, SparseMatrix * Ac, local_int_t 
     const global_int_t * fine0_mtxIndG = Af->mtxIndG[c2fOperator[ic][0]];
     const double * fine0_matrixValues = Af->matrixValues[c2fOperator[ic][0]];
     local_int_t fine0_nonzerosInRow = Af->nonzerosInRow[c2fOperator[ic][0]];
-    const global_int_t * fine1_mtxIndG = (c2fOperator[ic][1]!=-1) ? Af->mtxIndG[c2fOperator[ic][1]]  : 0;
-    const double * fine1_matrixValues = (c2fOperator[ic][1]!=-1) ? Af->matrixValues[c2fOperator[ic][1]] : 0;
-    local_int_t fine1_nonzerosInRow = (c2fOperator[ic][1]!=-1) ? Af->nonzerosInRow[c2fOperator[ic][1]] : 0;
+    const global_int_t * fine1_mtxIndG;
+    const double * fine1_matrixValues;
+    local_int_t fine1_nonzerosInRow;
+    if (c2fOperator[ic][1]==-1){
+      fine1_mtxIndG = 0;
+      fine1_matrixValues = 0;
+      fine1_nonzerosInRow = 0;
+    }else{
+      if (c2fOperator[ic][1] < nf){
+	int tmp =c2fOperator[ic][1];
+	fine1_mtxIndG = Af->mtxIndG[tmp];
+	fine1_matrixValues = Af->matrixValues[tmp];
+	fine1_nonzerosInRow = Af->nonzerosInRow[tmp];
+      }else{
+	assert(c2fOperator[ic][1] == nf);
+	int rank = Ac->geom->rank;
+	MPI_Request request[3];
+	MPI_Status status[3];
+	int MPI_MY_TAG=98;
+	MPI_Irecv(&fine1_nonzerosInRow, 1, MPI_INT, rank+1, MPI_MY_TAG, MPI_COMM_WORLD, request+0);
+	if (MPI_Wait(request+0, status+0)){
+	  std::cout<<"can't wait fine1_nonzerosInRow"<<std::endl;
+	  std::exit(-1);
+	}
+	global_int_t * tmp1 = new global_int_t[fine1_nonzerosInRow];
+	double * tmp2 = new double[fine1_nonzerosInRow];
+	MPI_Irecv(tmp1, fine1_nonzerosInRow, MPI_LONG_LONG, rank+1, MPI_MY_TAG, MPI_COMM_WORLD, request+1);
+	MPI_Irecv(tmp2, fine1_nonzerosInRow, MPI_DOUBLE, rank+1, MPI_MY_TAG, MPI_COMM_WORLD, request+2);
+	if (MPI_Wait(request+1, status+1)){
+	  std::cout<<"can't wait fine1_mtxIndG"<<std::endl;
+	  std::exit(-1);
+	}
+	if (MPI_Wait(request+2, status+2)){
+	  std::cout<<"can't wait fine1_matrixValues"<<std::endl;
+	  std::exit(-1);
+	}
+	fine1_mtxIndG = tmp1;
+	fine1_matrixValues = tmp2;
+      }
+    }
     
     global_int_t * currentIndexPointerG = mtxIndG[ic];
     double * currentValuePointer = matrixValues[ic];
@@ -204,7 +250,7 @@ void GenerateCoarseProblem(const SparseMatrix & Af) {
     int if1 = if0 + 1;
     c2fOperator[i] = new local_int_t[2];
     c2fOperator[i][0] = if0;
-    if (Af.geom->irow_begin + if1 < Af.geom->grow && if1 < nf){
+    if (Af.geom->irow_begin + if1 < Af.geom->grow){
       c2fOperator[i][1] = if1;
     } else
       c2fOperator[i][1] = -1;

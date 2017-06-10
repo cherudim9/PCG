@@ -76,6 +76,8 @@ void ExchangeRowRange(SparseMatrix & A, int * & RowRange){
       if (MPI_Wait(request+i, &status))
 	std::exit(-1);
 
+  delete []request;
+
   std::cout<<"Rank#"<<rank<<"   ";
   for(int i=0; i<size; i++)
     std::cout<<i<<":"<<RowRange[i*2]<<"->"<<RowRange[i*2+1]<<", ";
@@ -188,7 +190,7 @@ void SetupHalo_ref(SparseMatrix & A) {
   for (local_int_t i=0; i< localNumberOfRows; i++) {
     for (int j=0; j<nonzerosInRow[i]; j++) {
       global_int_t curIndex = mtxIndG[i][j];
-      int rankIdOfColumnEntry = ComputeRankOfMatrixRow(*(A.geom), curIndex);
+      int rankIdOfColumnEntry = GetRankOfMatrixRow(A.geom, RowRange, curIndex);
       if (A.geom->rank==rankIdOfColumnEntry) { // My column index, so convert to local index
         mtxIndL[i][j] = A.globalToLocalMap[curIndex];
       } else { // If column index is not a row index, then it comes from another processor
