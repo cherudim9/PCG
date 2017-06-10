@@ -138,11 +138,13 @@ int main(int argc, char * argv[]) {
   sscanf(argv[2], "%d", &numberOfMgLevels);
   int numberOfSubLevels;
   sscanf(argv[3], "%d", &numberOfSubLevels);
+  int steps;
+  sscanf(argv[4], "%d", &steps);
   SparseMatrix * curLevelMatrix = &A;
   for (int level = 1; level<= numberOfMgLevels; ++level) {
     for(int sublevel = 1; sublevel <= numberOfSubLevels; ++ sublevel){
       if (sublevel == 1)
-	GenerateCoarseProblem(*curLevelMatrix, 2);
+	GenerateCoarseProblem(*curLevelMatrix, steps);
       else
 	GenerateCoarseProblem(*curLevelMatrix, 0);
       curLevelMatrix = curLevelMatrix->Ac; // Make the just-constructed coarse grid the next level
