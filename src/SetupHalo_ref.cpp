@@ -48,6 +48,7 @@ using std::endl;
   @see ExchangeHalo
 */
 
+#ifndef HPCG_NO_MPI
 void ExchangeRowRange(SparseMatrix & A, int * & RowRange){
   int size, rank; 
   MPI_Comm_size(MPI_COMM_WORLD, &size);
@@ -83,6 +84,7 @@ void ExchangeRowRange(SparseMatrix & A, int * & RowRange){
     std::cout<<i<<":"<<RowRange[i*2]<<"->"<<RowRange[i*2+1]<<", ";
   std::cout<<std::endl;
 }
+#endif
 
 int GetRankOfMatrixRow(Geometry * geom, int * RowRange, int curIndex){
   int size=geom->size;

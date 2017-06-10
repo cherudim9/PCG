@@ -36,6 +36,7 @@ void GenerateCoarseCoef(const SparseMatrix * Af, SparseMatrix * Ac, local_int_t 
 
   local_int_t nf = Af->localNumberOfRows;
 
+#ifndef HPCG_NO_MPI
   if (Af->geom->irow_begin%2==1){
     //pass this row to last rank
     int rank = Af->geom->rank;
@@ -44,6 +45,7 @@ void GenerateCoarseCoef(const SparseMatrix * Af, SparseMatrix * Ac, local_int_t 
     MPI_Send(Af->mtxIndG[0], Af->nonzerosInRow[0], MPI_LONG_LONG, rank-1, MPI_MY_TAG, MPI_COMM_WORLD);
     MPI_Send(Af->matrixValues[0], Af->nonzerosInRow[0], MPI_DOUBLE, rank-1, MPI_MY_TAG, MPI_COMM_WORLD);
   }
+#endif
 
   local_int_t numberOfNonzerosPerRow = 400;
   global_int_t totalNumberOfRows = Ac->geom->grow;
@@ -102,6 +104,7 @@ void GenerateCoarseCoef(const SparseMatrix * Af, SparseMatrix * Ac, local_int_t 
 	fine1_matrixValues = Af->matrixValues[tmp];
 	fine1_nonzerosInRow = Af->nonzerosInRow[tmp];
       }else{
+#ifndef HPCG_NO_MPI
 	assert(c2fOperator[ic][1] == nf);
 	int rank = Ac->geom->rank;
 	MPI_Request request[3];
@@ -126,6 +129,9 @@ void GenerateCoarseCoef(const SparseMatrix * Af, SparseMatrix * Ac, local_int_t 
 	}
 	fine1_mtxIndG = tmp1;
 	fine1_matrixValues = tmp2;
+#else
+	assert(false);
+#endif
       }
     }
     
