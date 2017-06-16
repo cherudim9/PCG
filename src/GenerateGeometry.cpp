@@ -22,7 +22,6 @@
 #include <cstdlib>
 #include <cassert>
 
-#include "ComputeOptimalShapeXYZ.hpp"
 #include "GenerateGeometry.hpp"
 
 #ifdef HPCG_DEBUG

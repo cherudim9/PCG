@@ -17,16 +17,11 @@ using std::endl;
 
 #include "hpcg.hpp"
 
-#include "CheckAspectRatio.hpp"
 #include "GenerateGeometry.hpp"
 #include "GenerateProblem.hpp"
 #include "GenerateCoarseProblem.hpp"
 #include "SetupHalo.hpp"
-#include "CheckProblem.hpp"
 #include "ExchangeHalo.hpp"
-#include "OptimizeProblem.hpp"
-#include "WriteProblem.hpp"
-#include "ReportResults.hpp"
 #include "mytimer.hpp"
 #include "ComputeSPMV_ref.hpp"
 #include "ComputeMG_ref.hpp"
@@ -37,9 +32,7 @@ using std::endl;
 #include "SparseMatrix.hpp"
 #include "Vector.hpp"
 #include "CGData.hpp"
-#include "TestCG.hpp"
-#include "TestSymmetry.hpp"
-#include "TestNorms.hpp"
+
 
 int main(int argc, char * argv[]) {
 

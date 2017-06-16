@@ -36,7 +36,6 @@ const char* NULLDEVICE="/dev/null";
 
 #include "hpcg.hpp"
 
-#include "ReadHpcgDat.hpp"
 
 std::ofstream HPCG_fout; //!< output file stream for logging activities during HPCG run
 
